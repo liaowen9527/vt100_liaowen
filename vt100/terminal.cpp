@@ -17,6 +17,23 @@ terminal::~terminal()
 
 bool terminal::check_compat(int vttype)
 {
+	if (is_compat(vttype))
+	{
+		return true;
+	}
+
+	get_parser()->set_termstate(TOPLEVEL);
+	return false;
+}
+
+bool terminal::check_compat_2(int vttype, int vttype2)
+{
+	if (is_compat(vttype) || is_compat(vttype2))
+	{
+		return true;
+	}
+
+	get_parser()->set_termstate(TOPLEVEL);
 	return false;
 }
 
@@ -110,9 +127,33 @@ void terminal::set_last_graphic_char(termchar* chr)
 	*m_last_graphic_char = *chr;
 }
 
+termchar* terminal::get_basic_erase_char()
+{
+	return &m_basic_erase_char;
+}
+
 termchar* terminal::get_erase_char()
 {
 	return &m_erase_char;
+}
+
+void terminal::set_erase_char()
+{
+	m_erase_char = m_basic_erase_char;
+	if (get_conf()->is_use_bce())
+	{
+		
+	}
+}
+
+termchar_attr* terminal::get_default_attr()
+{
+	return &m_default_attr;
+}
+
+termchar_attr* terminal::get_curr_attr()
+{
+	return &m_curr_attr;
 }
 
 bool terminal::find_next_tab(int from_col, int& end_col)
@@ -159,6 +200,12 @@ void terminal::resize(int rows, int cols)
 		screen* sc = &m_screens[i];
 		sc->get_lines()->resize(rows, cols);
 	}
+}
+
+void terminal::restore_attr()
+{
+	m_curr_attr = m_default_attr;
+	*m_curr_attr.get_truecolour() = *(m_basic_erase_char.get_colour());
 }
 
 void terminal::swap_screen(int witch, bool reset, bool keep_cur_pos)

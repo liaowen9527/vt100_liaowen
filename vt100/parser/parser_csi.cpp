@@ -288,10 +288,10 @@ void parser_csi::parser_0(char ch)
 		get_control()->set_graphics_rendition();
 		break;
 	case 's':       /* save cursor */
-		get_control()->save_cursor();
+		get_control()->save_cursor(true);
 		break;
 	case 'u':       /* restore cursor */
-		get_control()->restore_cursor();
+		get_control()->save_cursor(false);
 		break;
 	case 't': /* DECSLPP: set page size - ie window height */
 		get_control()->set_pagesize();
@@ -441,7 +441,11 @@ void parser_csi::parser_comb(char query, char ch)
 			}
 			break;
 		case 'D':
-			//m_render->SetBlink();
+			if (m_term->check_compat(SCOANSI))
+			{
+				int arg = arg_list->get_arg(0);
+				
+			}
 			break;
 		case 'E':
 			//m_render->SetBlinkIsReal();

@@ -159,8 +159,11 @@
     <ClInclude Include="vt100\chars\screen_lines.h" />
     <ClInclude Include="vt100\chars\scrollback.h" />
     <ClInclude Include="vt100\chars\termchar.h" />
+    <ClInclude Include="vt100\chars\termchar_attr.h" />
+    <ClInclude Include="vt100\chars\termchar_attr_decode.h" />
     <ClInclude Include="vt100\chars\termline.h" />
-    <ClInclude Include="vt100\conf.h" />
+    <ClInclude Include="vt100\conf\colours.h" />
+    <ClInclude Include="vt100\conf\conf.h" />
     <ClInclude Include="vt100\control\control.h" />
     <ClInclude Include="vt100\parser\argument.h" />
     <ClInclude Include="vt100\parser\osc_string.h" />
@@ -197,8 +200,11 @@
     <ClCompile Include="vt100\chars\screen_lines.cpp" />
     <ClCompile Include="vt100\chars\scrollback.cpp" />
     <ClCompile Include="vt100\chars\termchar.cpp" />
+    <ClCompile Include="vt100\chars\termchar_attr.cpp" />
+    <ClCompile Include="vt100\chars\termchar_attr_decode.cpp" />
     <ClCompile Include="vt100\chars\termline.cpp" />
-    <ClCompile Include="vt100\conf.cpp" />
+    <ClCompile Include="vt100\conf\colours.cpp" />
+    <ClCompile Include="vt100\conf\conf.cpp" />
     <ClCompile Include="vt100\control\control.cpp" />
     <ClCompile Include="vt100\parser\argument.cpp" />
     <ClCompile Include="vt100\parser\osc_string.cpp" />

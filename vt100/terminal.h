@@ -4,7 +4,7 @@
 #include "screen.h"
 #include "parser/parser.h"
 #include "control/control.h"
-#include "conf.h"
+#include "conf/conf.h"
 #include "chars/scrollback.h"
 #include "vt_type.h"
 
@@ -16,6 +16,8 @@ public:
 
 public:
 	bool check_compat(int vttype);
+	bool check_compat_2(int vttype, int vttype2);
+
 	bool is_compat(int vttype);
 	int get_compat();
 	void set_compat(int vttype);
@@ -39,7 +41,12 @@ public:
 	termchar_ptr get_last_graphic_char();
 	void set_last_graphic_char(termchar* chr);
 
+	termchar* get_basic_erase_char();
 	termchar* get_erase_char();
+	void set_erase_char();
+
+	termchar_attr* get_default_attr();
+	termchar_attr* get_curr_attr();
 
 	bool find_next_tab(int from_col, int& end_col);
 	void set_a_tab(int col, bool val);
@@ -49,6 +56,7 @@ public:
 
 public:
 	void resize(int rows, int cols);
+	void restore_attr();
 	void swap_screen(int witch, bool reset, bool keep_cur_pos);
 	void preline();
 	void nextline();
@@ -77,5 +85,6 @@ protected:
 	termchar m_basic_erase_char;
 	termchar m_erase_char;	//to erase char
 	termchar_ptr m_last_graphic_char;
-
+	termchar_attr m_default_attr;
+	termchar_attr m_curr_attr;
 };

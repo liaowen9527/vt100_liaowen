@@ -22,6 +22,16 @@ void termchar::set_char(wchar_t ch)
 	set_ucswide(false);
 }
 
+termchar_attr* termchar::get_attr()
+{
+	return &m_attr;
+}
+
+truecolour* termchar::get_colour()
+{
+	return m_attr.get_truecolour();
+}
+
 bool termchar::is_wchar()
 {
 	return m_char > 0xFF;

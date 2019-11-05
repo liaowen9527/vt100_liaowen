@@ -52,10 +52,16 @@ void parser_esc::parser_0(char ch)
 		get_control()->into_osc();
 		break;
 	case '7':		/* DECSC: save cursor */
-		get_control()->save_cursor();
+		if (m_term->check_compat(VT100))
+		{
+			get_control()->save_cursor();
+		}
 		break;
 	case '8':	 	/* DECRC: restore cursor */
-		get_control()->restore_cursor();
+		if (m_term->check_compat(VT100))
+		{
+			get_control()->save_cursor(false);
+		}
 		break;
 	case '=':		/* DECKPAM: Keypad application mode */
 		//KeypadAppMode();

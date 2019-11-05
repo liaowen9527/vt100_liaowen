@@ -28,6 +28,9 @@
     <Filter Include="vt100\utf8">
       <UniqueIdentifier>{6842e13a-36dc-4560-9926-ded8c48e1fcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vt100\conf">
+      <UniqueIdentifier>{d3bae654-5a49-40b6-bbcd-4b94cc76a969}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -44,9 +47,6 @@
     </ClInclude>
     <ClInclude Include="vt100\chars\termline.h">
       <Filter>vt100\chars</Filter>
-    </ClInclude>
-    <ClInclude Include="vt100\conf.h">
-      <Filter>vt100</Filter>
     </ClInclude>
     <ClInclude Include="vt100\parser\parser.h">
       <Filter>vt100\parser</Filter>
@@ -123,6 +123,18 @@
     <ClInclude Include="vt100\parser\parser_vt52_fg.h">
       <Filter>vt100\parser</Filter>
     </ClInclude>
+    <ClInclude Include="vt100\chars\termchar_attr.h">
+      <Filter>vt100\chars</Filter>
+    </ClInclude>
+    <ClInclude Include="vt100\chars\termchar_attr_decode.h">
+      <Filter>vt100\chars</Filter>
+    </ClInclude>
+    <ClInclude Include="vt100\conf\conf.h">
+      <Filter>vt100\conf</Filter>
+    </ClInclude>
+    <ClInclude Include="vt100\conf\colours.h">
+      <Filter>vt100\conf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -139,9 +151,6 @@
     </ClCompile>
     <ClCompile Include="vt100\chars\termline.cpp">
       <Filter>vt100\chars</Filter>
-    </ClCompile>
-    <ClCompile Include="vt100\conf.cpp">
-      <Filter>vt100</Filter>
     </ClCompile>
     <ClCompile Include="vt100\parser\parser.cpp">
       <Filter>vt100\parser</Filter>
@@ -214,6 +223,18 @@
     </ClCompile>
     <ClCompile Include="vt100\parser\parser_vt52_fg.cpp">
       <Filter>vt100\parser</Filter>
+    </ClCompile>
+    <ClCompile Include="vt100\chars\termchar_attr.cpp">
+      <Filter>vt100\chars</Filter>
+    </ClCompile>
+    <ClCompile Include="vt100\chars\termchar_attr_decode.cpp">
+      <Filter>vt100\chars</Filter>
+    </ClCompile>
+    <ClCompile Include="vt100\conf\conf.cpp">
+      <Filter>vt100\conf</Filter>
+    </ClCompile>
+    <ClCompile Include="vt100\conf\colours.cpp">
+      <Filter>vt100\conf</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

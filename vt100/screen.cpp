@@ -1,6 +1,16 @@
 #include "screen.h"
 #include "terminal.h"
 
+bool poslt(const cursor& _Left, const cursor& _Right)
+{
+	if (_Left.row == _Right.row)
+	{
+		return _Left.col < _Right.col;
+	}
+	return _Left.row < _Right.row;
+}
+
+
 screen::screen()
 {
 	m_curs.row = m_curs.col = 0;
@@ -13,7 +23,7 @@ screen::screen()
 
 	m_cset = m_save_cset = 0;
 	m_save_csattr = 0;
-	m_sco_acs = m_save_sco_acs = false;
+	m_sco_acs = m_save_sco_acs = 0;
 	m_curr_attr = m_save_attr = 0;
 }
 
@@ -167,6 +177,16 @@ void screen::set_utf(bool val)
 	m_utf = val;
 }
 
+int screen::get_sco_acs()
+{
+	return m_sco_acs;
+}
+
+void screen::set_sco_acs(int val)
+{
+	m_sco_acs = val;
+}
+
 screen_lines* screen::get_lines()
 {
 	return &m_lines;
@@ -207,3 +227,9 @@ bool screen::is_dec_om()
 {
 	return m_dec_om;
 }
+
+void screen::set_dec_om(bool val)
+{
+	m_dec_om = val;
+}
+

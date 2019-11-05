@@ -6,6 +6,7 @@ struct cursor
 	int row;
 	int col;
 };
+extern bool poslt(const cursor& _Left, const cursor& _Right);
 
 struct margin
 {
@@ -41,6 +42,9 @@ public:
 
 	bool get_utf();
 	void set_utf(bool val);
+
+	int get_sco_acs();
+	void set_sco_acs(int val);
 
 public:
 	screen_lines* get_lines();
@@ -78,6 +82,6 @@ protected:
 	int m_curr_attr;
 	int m_save_attr;
 
-	bool m_sco_acs;
-	bool m_save_sco_acs;
+	int m_sco_acs;
+	int m_save_sco_acs;
 };
